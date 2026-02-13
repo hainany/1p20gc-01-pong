@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dv1uuf8ekm2l5"]
+
+[ext_resource type="Script" uid="uid://cvxj7u4m4a0x1" path="res://player_a.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bjmbngnhk5ewm" path="res://player_b.gd" id="2_0xm2m"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_7dm0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(31.75, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(1149, 15)
+
+[node name="Game" type="Node2D" unique_id=755186367]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1011500948]
+modulate = Color(0.6601367, 0.47592705, 0.18295357, 1)
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 1142.0
+offset_bottom = 650.0
+texture = SubResource("CanvasTexture_7dm0k")
+
+[node name="PlayerA" type="CharacterBody2D" parent="." unique_id=732088814]
+script = ExtResource("1_ig7tw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerA" unique_id=761200419]
+position = Vector2(840.125, 327.5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerA" unique_id=1243800089]
+offset_left = 824.0
+offset_top = 272.0
+offset_right = 858.0
+offset_bottom = 382.0
+
+[node name="PlayerB" type="CharacterBody2D" parent="." unique_id=1249063086]
+script = ExtResource("2_0xm2m")
+SPEED = 300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerB" unique_id=1338846366]
+position = Vector2(352, 327.5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="ColorRect" type="ColorRect" parent="PlayerB" unique_id=758233186]
+offset_left = 336.0
+offset_top = 272.0
+offset_right = 370.0
+offset_bottom = 382.0
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1015153170]
+
+[node name="UpWall" type="CollisionShape2D" parent="Walls" unique_id=1225611526]
+position = Vector2(564.5, -2.5)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="DownWall" type="CollisionShape2D" parent="Walls" unique_id=1557648364]
+position = Vector2(569, 651)
+shape = SubResource("RectangleShape2D_h2yge")
