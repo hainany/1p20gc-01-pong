@@ -2,11 +2,21 @@
 
 [ext_resource type="Script" uid="uid://cvxj7u4m4a0x1" path="res://scripts/player_a.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bjmbngnhk5ewm" path="res://scripts/player_b.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cxyenmeuk76ud" path="res://scripts/ball_spawner.gd" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://bxevymji3t5c0" path="res://scenes/ball.tscn" id="4_jyhfs"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_7dm0k"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jyhfs"]
+friction = 0.0
+bounce = 1.0
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(31.75, 111)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tbgi4"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(1149, 15)
@@ -21,7 +31,8 @@ offset_right = 1142.0
 offset_bottom = 650.0
 texture = SubResource("CanvasTexture_7dm0k")
 
-[node name="PlayerA" type="CharacterBody2D" parent="." unique_id=732088814]
+[node name="PlayerA" type="AnimatableBody2D" parent="." unique_id=516449585]
+physics_material_override = SubResource("PhysicsMaterial_jyhfs")
 script = ExtResource("1_ig7tw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerA" unique_id=761200419]
@@ -34,7 +45,8 @@ offset_top = 272.0
 offset_right = 858.0
 offset_bottom = 382.0
 
-[node name="PlayerB" type="CharacterBody2D" parent="." unique_id=1249063086]
+[node name="PlayerB" type="AnimatableBody2D" parent="." unique_id=1887289335]
+physics_material_override = SubResource("PhysicsMaterial_tbgi4")
 script = ExtResource("2_0xm2m")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerB" unique_id=1338846366]
@@ -56,3 +68,10 @@ shape = SubResource("RectangleShape2D_h2yge")
 [node name="DownWall" type="CollisionShape2D" parent="Walls" unique_id=1557648364]
 position = Vector2(569, 651)
 shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="BallSpawner" type="Node2D" parent="." unique_id=557943215]
+script = ExtResource("3_sugp2")
+ball_scene = ExtResource("4_jyhfs")
+
+[node name="SpawnPosition" type="Marker2D" parent="BallSpawner" unique_id=1689065500]
+position = Vector2(584, 321)

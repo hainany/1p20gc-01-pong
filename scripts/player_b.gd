@@ -1,4 +1,5 @@
-extends CharacterBody2D
+# extends CharacterBody2D
+extends AnimatableBody2D
 
 
 @export var SPEED = 400.0
@@ -15,6 +16,7 @@ func _physics_process(delta: float) -> void:
 		
 	# var direction_a = Input.get_vector("up_a", "down_a", "up_a", "down_a")
 	
-	velocity.y = direction * SPEED
-	move_and_slide()
+	# velocity.y = direction * SPEED
+	global_position.y += direction * SPEED *delta
+	# move_and_slide()
 	
